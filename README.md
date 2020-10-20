@@ -33,3 +33,7 @@ curl -XPOST -u george.bluth@reqres.in:password localhost:8080/api/message -d '{"
 # retrieve the message you set
 curl -u george.bluth@reqres.in:password localhost:8080/api/message
 ```
+
+## Configuartion
+
+Set the data directory where user messages are stored by setting the `DATA_DIR` environment variable.
