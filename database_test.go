@@ -2,8 +2,11 @@ package main
 
 import (
 	"io/ioutil"
+	"math/rand"
 	"os"
+	"strconv"
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -25,7 +28,11 @@ func SetupDatabase(t *testing.T) (string, *Database) {
 }
 
 func TestCreateDatabaseNotExist(t *testing.T) {
-	d, err := CreateDatabase("data")
+	// create a random directory path that shouldn't exist
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	var path = "data" + strconv.Itoa(r.Int())
+
+	d, err := CreateDatabase(path)
 	assert.NotNil(t, err)
 	assert.Nil(t, d)
 }
