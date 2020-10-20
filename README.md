@@ -3,19 +3,22 @@ A simple program that allows users to set and get messages.
 It uses a fake external api for authenticating users (with any password).
 
 ## Building and Running
+```
 make build
 chmod +x ./server
 ./server
+```
 
 ## Endpoints
 
 /api/message - GET
+
 /api/message - POST
 
 ## Testing
-go test
+`go test`
 
-go run .
+`go run .`
 
 ```
 # see that you need to pass basic auth
