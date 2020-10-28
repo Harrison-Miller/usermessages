@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: usermessages
+  labels:
+    app: usermessages
+spec:
+  selector:
+    matchLabels: usermessages
+  template:
+    metadata:
+      labels:
+        app: usermessages
+    spec:
+      containers:
+        - name: usermessages
+          image: harrisonmiller/usermessages
+          env:
+            - name: DATA_DIR
+              value: "/data"
+          ports:
+            -containerPort: 8080
+      resources:
+        requests:
+          cpu: 100m
+          memory: 100Mi
+      readinessProbe:
+        httpGet:
+          path: /health

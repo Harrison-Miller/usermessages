@@ -33,7 +33,8 @@ func GetMessage(e Env, w http.ResponseWriter, r *http.Request) {
 
 	m, err := e.Database.GetMessage(user.UserID)
 	if err != nil {
-		http.Error(w, "No message has been set", http.StatusOK)
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("No message has been set"))
 		return
 	}
 
@@ -92,6 +93,9 @@ func main() {
 	}
 
 	r := mux.NewRouter()
+	r.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+	})
 	r.HandleFunc("/api/message", envHandler(env, GetMessage)).Methods("GET")
 	r.HandleFunc("/api/message", envHandler(env, SetMessage)).Methods("POST")
 
