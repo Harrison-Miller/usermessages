@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: usermessages
@@ -8,7 +8,5 @@ spec:
         paths:
           - path: /
             backend:
-              service:
-                name: usermessages
-                port:
-                  number: 8080
+              serviceName: usermessages
+              servicePort: 8080

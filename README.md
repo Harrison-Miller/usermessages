@@ -39,3 +39,13 @@ curl -u george.bluth@reqres.in:password localhost:8080/api/message
 ## Configuartion
 
 Set the data directory where user messages are stored by setting the `DATA_DIR` environment variable.
+
+## Deploying
+
+To deploy to kubernetes run the following:
+```
+kubectl create ns <namespace-name>
+kubectl apply -f k8s/deployment.yaml -n <namespace-name>
+kubectl apply -f k8s/service.yaml -n <namespace-name>
+kubectl apply -f k8s/ingress.yaml -n <namespace-name>
+```
