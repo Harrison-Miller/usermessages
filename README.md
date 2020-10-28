@@ -8,6 +8,8 @@ make build
 chmod +x ./server
 ./server
 ```
+or for the docker image
+`make docker`
 
 ## Endpoints
 
